@@ -4,6 +4,8 @@ set -ouex pipefail
 
 ### Download and unpack Eclipes IDE
 
+# TODO: Add desktop icon
+
 ECLIPSE_VER="4.35"
 ECLIPSE_REL="2025-03/R"
 
