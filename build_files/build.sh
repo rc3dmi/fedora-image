@@ -9,8 +9,8 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# copy repo files
-cp -r /ctx/repos/* /etc/yum.repos.d/
+# copy system files
+rsync -rvK /ctx/sys_files/ /
 
 # install and configure dev
 find /ctx/dev -type f -name "*.sh" | sort | while read -r script
@@ -29,3 +29,4 @@ done
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable hostname-automap
