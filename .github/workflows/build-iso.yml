@@ -10,6 +10,7 @@ on:
         default: false
         type: boolean
       platform:
+        description: "System architecture"
         required: true
         type: choice
         options:
@@ -46,7 +47,7 @@ jobs:
       - name: lower case the image registry in case of any capitalization
         run: |
           echo "IMAGE_REGISTRY=${IMAGE_REGISTRY,,}" >> ${GITHUB_ENV}
-      
+
       - name: Install dependencies
         if: inputs.platform == 'arm64'
         run: |
