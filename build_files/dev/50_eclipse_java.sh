@@ -16,12 +16,12 @@ curl -s -L -o /tmp/eclipse.tar.gz $SRC_URL
 install -d /usr/lib
 install -d /usr/bin
 
-tar -xf /tmp/eclipse.tar.gz -C /tmp
-mv /tmp/eclipse /usr/lib/eclipse
-ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
+tar --no-same-owner -xf /tmp/eclipse.tar.gz -C /tmp
+mv /tmp/eclipse /usr/lib/eclipse-java
+ln -s /usr/lib/eclipse/eclipse-java /usr/bin/eclipse-java
 
 for i in 16 22 24 32 48 64 128 256 512 1024
 do
-  install -Dm0644 /usr/lib/eclipse/plugins/org.eclipse.platform_${ECLIPSE_VER}*/eclipse$i.png \
+  install -Dm0644 /usr/lib/eclipse-java/plugins/org.eclipse.platform_${ECLIPSE_VER}*/eclipse$i.png \
     "/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
 done
