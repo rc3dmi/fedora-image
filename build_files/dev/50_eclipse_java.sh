@@ -4,8 +4,6 @@ set -ouex pipefail
 
 ### Download and unpack Eclipes IDE
 
-# TODO: Add desktop icon
-
 ECLIPSE_VER="4.35"
 ECLIPSE_REL="2025-03/R"
 
@@ -25,5 +23,7 @@ ln -s /usr/lib/eclipse/eclipse-java /usr/bin/eclipse-java
 for i in 16 22 24 32 48 64 128 256 512 1024
 do
   install -Dm0644 /usr/lib/eclipse-java/plugins/org.eclipse.platform_${ECLIPSE_VER}*/eclipse$i.png \
-    "/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
+    "/usr/share/icons/hicolor/${i}x${i}/apps/eclipse-java.png"
 done
+
+desktop-file-validate /usr/share/applications/eclipse-java.desktop
