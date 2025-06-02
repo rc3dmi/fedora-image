@@ -10,7 +10,7 @@ dnf5 install -y \
 systemctl enable cockpit.socket
 
 ### Add cockpit to firewall allow list
-firewall-cmd --add-service=cockpit --permanent
+firewall-offline-cmd --add-service=cockpit
 
 ### Install cockpit apps
 
