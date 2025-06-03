@@ -1,0 +1,39 @@
+#!/bin/bash
+
+flatpak config --system --set languages "*"
+flatpak remote-delete --system fedora
+flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+mapfile -t DESIRED_REFS < /usr/share/rc3/flatpaks.txt
+
+INSTALLED_REFS=$(flatpak list --columns=ref)
+
+TO_REMOVE_REFS=()
+for REF in $INSTALLED_REFS
+do
+  if ! [[ "${DESIRED_REFS[*]}" =~ "$REF" ]]
+  then
+    TO_REMOVE_REFS+=("$REF")
+  fi
+done
+
+TO_INSTALL_REFS=()
+for REF in $DESIRED_REFS
+do
+  if ! [[ "${INSTALLED_REFS[*]}" =~ "$REF" ]]
+  then
+    TO_INSTALL_REFS+=("$REF")
+  fi
+done
+
+for REF in "${TO_REMOVE_REFS[@]}"
+do
+  echo "Uninstalling: $REF"
+  flatpak uninstall --system -y "$REF"
+done
+
+for REF in "${TO_INSTALL_REFS[@]}"
+do
+  echo "Installing: $REF"
+  flatpak install --system -y --noninteractive flathub "$REF"
+done

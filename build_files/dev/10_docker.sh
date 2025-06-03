@@ -10,5 +10,3 @@ dnf5 install -y \
   containerd.io \
   docker-buildx-plugin \
   docker-compose-plugin
-
-systemctl enable docker.service

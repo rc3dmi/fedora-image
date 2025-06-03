@@ -1,0 +1,5 @@
+# RC3 image specific presets
+
+enable docker.service
+enable hostname-automap.service
+enable install-flatpaks.service

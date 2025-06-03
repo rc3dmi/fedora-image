@@ -1,0 +1,11 @@
+[Unit]
+Description=Installs Flatpak packages specified by the distribution
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/install-flatpaks
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
