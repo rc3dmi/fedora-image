@@ -13,7 +13,7 @@ pushd /tmp/sqldeveloper
 rpm2cpio /tmp/sqldeveloper.rpm | cpio -idm
 cp opt/sqldeveloper/sqldeveloper.desktop /usr/share/applications
 mv usr/local/bin/* /usr/bin
-mv opt/* /var/opt
+mv opt/sqldeveloper /var/opt
 popd
 
 # cleanup tmp files to save space
