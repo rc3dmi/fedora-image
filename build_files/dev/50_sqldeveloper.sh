@@ -6,5 +6,14 @@ set -ouex pipefail
 
 SRC_URL="https://download.oracle.com/otn_software/java/sqldeveloper/sqldeveloper-24.3.1-347.1826.noarch.rpm"
 
-dnf5 install -y \
-  $SRC_URL
+curl -L -s -o /tmp/sqldeveloper.rpm $SRC_URL
+mkdir -p /tmp/sqldeveloper
+
+pushd /tmp/sqldeveloper
+rpm2cpio /tmp/sqldeveloper.rpm | cpio -idm
+mv opt/* /var/opt
+mv usr/local/bin/* /var/usr/local/bin
+popd
+
+# cleanup tmp files to save space
+rm -r /tmp/sqldeveloper.rpm /tmp/sqldeveloper
