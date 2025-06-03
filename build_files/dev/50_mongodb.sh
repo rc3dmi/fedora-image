@@ -9,7 +9,7 @@ dnf5 install -y \
 
 ### Install NoSQLBooster
 
-BOOSTER_VER="9.1.8"
+BOOSTER_VER="9.1.6"
 BOOSTER_VER_MAJ="${BOOSTER_VER%%.*}"
 
 SRC_FILENAME="nosqlbooster4mongo-$BOOSTER_VER.tar.gz"
