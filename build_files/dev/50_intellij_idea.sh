@@ -25,3 +25,6 @@ tar \
 install -Dm0644 \
   /usr/lib/jetbrains-intellij-idea-ultimate/bin/idea.svg \
   /usr/share/icons/hicolor/scalable/apps/jetbrains-intellij-idea-ultimate.svg
+
+# cleanup tmp files to save space
+rm -r /tmp/idea.tar.gz

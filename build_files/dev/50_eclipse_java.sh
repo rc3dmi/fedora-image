@@ -27,3 +27,6 @@ do
 done
 
 desktop-file-validate /usr/share/applications/eclipse-java.desktop
+
+# cleanup tmp files to save space
+rm -r /tmp/eclipse.tar.gz
