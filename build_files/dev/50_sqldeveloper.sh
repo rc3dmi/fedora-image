@@ -12,8 +12,7 @@ mkdir -p /tmp/sqldeveloper
 pushd /tmp/sqldeveloper
 rpm2cpio /tmp/sqldeveloper.rpm | cpio -idm
 cp opt/sqldeveloper/sqldeveloper.desktop /usr/share/applications
-mkdir /var/usrlocal/bin
-mv usr/local/bin/* /var/usrlocal/bin
+mv usr/local/bin/* /usr/bin
 mv opt/* /var/opt
 popd
 
