@@ -12,6 +12,13 @@ set -ouex pipefail
 # copy system files
 rsync -rvK /ctx/sys_files/ /
 
+# run all pre-run scripts
+find /ctx/prerun -type f -name "*.sh" | sort | while read -r script
+do
+  echo "running: $script"
+  bash $script
+done
+
 # install and configure packages for maintaing systems
 find /ctx/maintain -type f -name "*.sh" | sort | while read -r script
 do
