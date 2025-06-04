@@ -1,13 +1,12 @@
+ARG FEDORA_VER
+
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
 COPY sys_files /sys_files
 
-ARG FEDORA_VER
-
 # Base Image
-# FROM ghcr.io/ublue-os/silverblue-nvidia:$FEDORA_VER
-FROM ghcr.io/ublue-os/silverblue-nvidia:41
+FROM ghcr.io/ublue-os/silverblue-nvidia:$FEDORA_VER
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
